@@ -1,0 +1,23 @@
+L=int(input())
+line=list(input())
+stack=['0']
+i=0
+while i <= len(line)-1:
+#for i in range(len(line)):
+    if line[i] !=' ':
+        if stack[-1]=='0' and (line[i]==')'or line[i]==']' or line[i]=='}'):
+            print(f'{line[i]} {i}')
+            exit()
+        if [stack[-1],line[i]] in [['{',')'],['{',']'],['[',')'],['[','}'],['(',']'],['(','}']]:
+            print(f'{line[i]} {i}')
+            exit()
+        elif [stack[-1] , line[i]] ==['[',']'] or [stack[-1] , line[i]]==['(',')'] or[stack[-1] , line[i]]== ['{','}']:
+            stack.pop()
+            i+=1
+        else:
+            stack.append(line[i])
+            i+=1
+    else:
+        i+=1
+
+print('ok so far')   
